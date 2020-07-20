@@ -6,6 +6,7 @@ import Welcome from './Comtainers/Welcome/Welcome';
 import Registor from './Comtainers/Welcome/Registor/Registor';
 import Login from './Comtainers/Welcome/Login/Login';
 import Logout from './Comtainers/Welcome/Logout/Logout';
+import Showmore from './Comtainers/Showmore/Showmore';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path = "/registor" component={Registor}/>
           <Route path = "/login" component={Login}/>
           <Route path = "/logout" component={Logout}/>
+          <Route path ="/showmore" component={Showmore}/>
 
           
          

@@ -1,11 +1,11 @@
 import React from 'react';
-import './Post.css';
+import './Post2.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
 
-const post =(props) =>(
+const post2 =(props) =>(
 
-<div className="Post">
+<div className="Post2">
 
 <div >
 <h1>{props.id}</h1>
@@ -31,7 +31,6 @@ const post =(props) =>(
 </div> 
 </DropdownButton>
     </div>
-
 )
 
-export default post;
+export default post2;
