@@ -1,0 +1,25 @@
+.Registor{
+    background-color: rgb(189, 131, 60);
+    
+}
+
+.Registor form{
+    background-color: rgb(176, 138, 211);
+    padding: 10% 10% 10% 10%;
+}
+
+.Registor button{
+    background-color: rgb(0, 47, 255);
+}
+
+.Registor p{
+    text-align: center;
+}
+
+.Registor h2{
+    text-align: center;
+}
+
+.Registor input{
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+.Login{
+    background-color: bisque;
+    
+}
+
+.Login form{
+    background-color: rgb(186, 207, 161);
+    padding: 10% 10% 10% 10%;
+}
+
+.Login button{
+    background-color: rgb(120, 88, 235);
+}
+
+.Login p{
+    text-align: center;
+}
+
+.Login h2{
+    text-align: center;
+}
+
+.Login input{
+    text-align: center;
+}
+.Login img{
+    background-color: white;
+    padding: 0px;
+    height: 80%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    align-items: center;
+    
+    
+}
