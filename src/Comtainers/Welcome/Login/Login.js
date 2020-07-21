@@ -20,12 +20,16 @@ class Login extends Component {
        super(props)
  const token =localStorage.getItem("token")
  
+ 
+
 
          let loggedIn = true
          if(token==null){
              loggedIn =false
+            
          }
 
+      
 
         this.state = {
             
@@ -40,6 +44,7 @@ class Login extends Component {
         }
 
         this.onChange =this.onChange.bind(this)
+        this.onChange2 =this.onChange2.bind(this)
         this.submitForm=this.submitForm.bind(this)
         this.submitForm2=this.submitForm2.bind(this)
       
@@ -54,25 +59,32 @@ class Login extends Component {
         const { name, value } = e.target;
         this.setState({ [name]: value });
     }
+    onChange2=(e)=>{
+        const { name, value } = e.target;
+        this.setState({ [name]: value });
+    }
 
 submitForm=(e)=>{
     e.preventDefault()
-    const { email, password,email2,password2} = this.state
+    const { email, password,email2,password2,repassword} = this.state
 
-    if(email ===email2 && password ===password2){
+
+    if(email ===email2 && password ===password2&& repassword===password2){
         localStorage.setItem("token" ," j")
         this.setState({
             loggedIn: true
 
         })
+}
 
-    }
 
     console.log(this.state)
 }
+
+
 submitForm2=(e)=>{
     e.preventDefault()
-    const { repassword,password2} = this.state
+   
 
 }
 
@@ -84,11 +96,9 @@ submitForm2=(e)=>{
 // const {email, password} =this.state;
 
         if(this.state.loggedIn){
-            return <Redirect to ="/home"/> 
-            
+            return <Redirect to ="/home"/>  
         }
-
-        
+       
 
 
 
@@ -120,23 +130,21 @@ submitForm2=(e)=>{
 
 
 <form onSubmit ={this.submitForm2}>
-<p><input type='text' placeholder ='fullname' name='fullname' value={this.state.fullname} onChange={this.onChange} required/></p>
+<p><input type='text' placeholder ='fullname' name='fullname' value={this.state.fullname} onChange={this.onChange2} required/></p>
 
-<p><input type='number' placeholder ='Mobile Number' name='number' value={this.state.number} onChange={this.onChange} required/></p>
+<p><input type='number' placeholder ='Mobile Number' name='number' value={this.state.number} onChange={this.onChange2} required/></p>
 
-<p><input type='email' placeholder ='email' name='email2' value={this.state.email2} onChange={this.onChange} required/></p>
-<p><input type='password' placeholder ='password' name='password2' value={this.state.password2} onChange={this.onChange} required/></p>
+<p><input type='email' placeholder ='email' name='email2' value={this.state.email2} onChange={this.onChange2} required/></p>
+<p><input type='password' placeholder ='password' name='password2' value={this.state.password2} onChange={this.onChange2} required/></p>
 
-<p><input type='password' placeholder ='Re enter pass word' name='repassword' value={this.state.repassword} onChange={this.onChange} required/></p>
+<p><input type='password' placeholder ='Re enter pass word' name='repassword' value={this.state.repassword} onChange={this.onChange2} required/></p>
 
 <p><input type='submit' /></p>
 
 
 
 </form>
-
-
-            </div>
+        </div>
         )
     }
 
