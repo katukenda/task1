@@ -3,10 +3,12 @@ import React,{useContext} from 'react';
 import {Link} from 'react-router-dom';
 
 
-const Nav = props=> {
+const nav = (props)=> {
 
 return(
     <div>
+      <li>
+</li>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div>
     
@@ -24,9 +26,7 @@ return(
         <a class="nav-link" href="#">Divices</a>
       </li>
       
-<li>
 
-</li>
 
     </ul>
     
@@ -40,4 +40,4 @@ return(
 
 }
 
-export default Nav;
+export default nav;

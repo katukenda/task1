@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Getdata from './Comtainers/Getdata/Getdata';
 import Home from './Comtainers/Home/Home';
@@ -8,8 +8,9 @@ import Login from './Comtainers/Welcome/Login/Login';
 import Logout from './Comtainers/Welcome/Logout/Logout';
 import Showmore from './Comtainers/Showmore/Showmore';
 
-function App() {
+class App extends Component{
 
+  render(){
 
 
     return(
@@ -38,7 +39,7 @@ function App() {
       
     );
     }
-
+  }
   
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
 import logo from '../../../assest/logo.png';
@@ -8,7 +8,7 @@ import Home from '../../Home/Home';
 import './Login.css';
 
 
-class Login extends React.Component {
+class Login extends Component {
 
 
 
@@ -97,7 +97,6 @@ submitForm2=(e)=>{
 
             <div className="Login">
                
-               
             <img src={logo} class="rounded mx-auto d-block" alt="img"/>
             <h2>Login Form</h2>
         <p>{this.state.fullname}</p>
@@ -135,10 +134,6 @@ submitForm2=(e)=>{
 
 
 </form>
-
-
-
-
 
 
             </div>

@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
 import {Link, Redirect} from 'react-router-dom';
 import Nav from '../../Components/Nav/Nav';
- import Title from '../../Components/Nav/Title'; 
  
- class Home extends React.Component{
+ 
+ class Home extends Component{
 
 constructor (props){
     super(props)
@@ -35,7 +35,7 @@ constructor (props){
         
       }
  
-  <Nav/>
+ <Nav/>
   </div>
 
 
