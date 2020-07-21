@@ -41,7 +41,9 @@ class Login extends Component {
             email: '',
             password: '',
             
+            showLogin:true
         }
+
 
         this.onChange =this.onChange.bind(this)
         this.onChange2 =this.onChange2.bind(this)
@@ -84,9 +86,23 @@ submitForm=(e)=>{
 
 submitForm2=(e)=>{
     e.preventDefault()
+    const { email, password,email2,password2,repassword} = this.state
+    if(repassword===password2){
+        this.setState({
+            showLogin: true
+        })
+    }
+
+
    
 
 }
+
+    toggLogin=()=>{
+
+        const doesShow = this.state.showLogin;
+        this.setState({showLogin:!doesShow});
+        }
 
 
 
@@ -105,9 +121,13 @@ submitForm2=(e)=>{
         
         return(
 
+
             <div className="Login">
                
             <img src={logo} class="rounded mx-auto d-block" alt="img"/>
+            {this.state.showLogin === true?
+            <div>
+            
             <h2>Login Form</h2>
         <p>{this.state.fullname}</p>
             
@@ -121,14 +141,13 @@ submitForm2=(e)=>{
 </Spinner>
     <input type='submit' /></p>
 
-
-
+    <p onClick={this.toggLogin}>Don't have an Accout?...Go to Login</p>
 </form>
 
-<Link to="/registor">Go to register</Link>
 
+</div>
 
-
+:<div>
 <form onSubmit ={this.submitForm2}>
 <p><input type='text' placeholder ='fullname' name='fullname' value={this.state.fullname} onChange={this.onChange2} required/></p>
 
@@ -140,10 +159,17 @@ submitForm2=(e)=>{
 <p><input type='password' placeholder ='Re enter pass word' name='repassword' value={this.state.repassword} onChange={this.onChange2} required/></p>
 
 <p><input type='submit' /></p>
-
+<p><button onClick={this.toggLogin}>Back</button></p>
 
 
 </form>
+</div>
+ 
+}
+
+
+
+
         </div>
         )
     }
