@@ -30,14 +30,14 @@ class Login extends Component {
             showLogin:true
         }
 
-        this.onChangelog =this.onChangelog.bind(this)
+        this.onChangelog =this.onChangelog.bind(this)  
         this.onChangeReg =this.onChangeReg.bind(this)
         this.submitFormlog=this.submitFormlog.bind(this)
         this.submitFormReg=this.submitFormReg.bind(this)
       
     }
 
-    onChangelog=(e)=>{
+    onChangelog=(e)=>{ //read value from input
         const { name, value } = e.target;
         this.setState({ [name]: value });
                  }
@@ -50,26 +50,39 @@ submitFormlog=(e)=>{
     e.preventDefault()
     const { email, password,emailReg,passwordReg} = this.state
 
-    if(email ===emailReg && password ===passwordReg){
+    if(email ===emailReg && password ===passwordReg){  //check the login data with register data
         localStorage.setItem("token" ," j")
         alert("You are Loged In");
         this.setState({
             loggedIn: true
             
         })
-}   
+}  
+else {
+
+if(passwordReg===''){   //if password empty alert masg
+    alert("You are not Registerd");
+}
+else 
+{
+    alert("Wrong Password"); // alert when password is wrong
+}
+
+
+}
+
 }
 
 
 submitFormReg=(e)=>{
     e.preventDefault()
     const { passwordReg,repassword, number} = this.state
-    if(repassword!==passwordReg){
+    if(repassword!==passwordReg){  //check registration password are same?
        
        alert("Paaword Missmatch");
     }
 
-    else if(number.length!==10)
+    else if(number.length!==10) // check the number of degit
     {
        
         alert("Invalid Mobile number");
@@ -82,7 +95,7 @@ submitFormReg=(e)=>{
     }
 }
 
-    toggLogin=()=>{
+    toggLogin=()=>{ // swap between login and register components
         const doesShow = this.state.showLogin;
         this.setState({showLogin:!doesShow});
         }

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { Redirect} from 'react-router-dom';
-import Nav from '../../Components/Nav/Nav';
+import Nav from '../../components/Nav/Nav';
  
  
  class Home extends Component{
