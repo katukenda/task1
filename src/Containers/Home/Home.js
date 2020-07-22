@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import Nav from '../../Components/Nav/Nav';
  
  
@@ -36,6 +36,10 @@ constructor (props){
       }
  
  <Nav/>
+
+ <h1>
+     Welcome To Home Page
+ </h1>
   </div>
 
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Post from '../../Components/Post/Post';
+
 import Post2 from '../../Components/Post2/Post2';
 import './Showmore.css';
-import Nav from '../../Components/Nav/Nav';
+
 
 class Showmore extends Component{
 

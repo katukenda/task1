@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Router, { Link } from 'react-router-dom';
-import Registor from './Registor/Registor';
-import { Route } from 'react-router-dom';
+import {Link } from 'react-router-dom';
+
+
 
 
 
@@ -19,7 +19,7 @@ class Welcome extends Component{
    
    </button></Link>
 
-            
+      
 </div>
         );
     }
