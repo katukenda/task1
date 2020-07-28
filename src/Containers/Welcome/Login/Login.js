@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 import {Redirect} from 'react-router-dom';
 import logo from '../../../assest/logo.png';
+import * as actionTypes from '../../../store/actions';
 
 
 import './Login.css';
@@ -19,15 +21,6 @@ class Login extends Component {
 
         this.state = {
             
-            fullname:'',
-            number:'',
-            emailReg: '',
-            passwordReg: '',
-            repassword:'',
-            email: '',
-            password: '',
-            
-            showLogin:true
         }
 
         this.onChangelog =this.onChangelog.bind(this)  
@@ -123,7 +116,7 @@ submitFormReg=(e)=>{
     <input type='email' 
     placeholder ='email' 
     name='email' 
-    value={this.state.email} 
+    value={this.props.lemail} 
     onChange={this.onChangelog} 
     required/>
 </p>
@@ -131,7 +124,7 @@ submitFormReg=(e)=>{
     <input type='password' 
     placeholder ='password' 
     name='password' 
-    value={this.state.password} 
+    value={this.props.lpassword} 
     onChange={this.onChangelog} 
     required/></p>
 <p>
@@ -149,7 +142,7 @@ submitFormReg=(e)=>{
     <input type='text' 
     placeholder ='fullname' 
     name='fullname' 
-    value={this.state.fullname} 
+    value={this.props.regfullname} 
     onChange={this.onChangeReg} 
     required/>
 </p>
@@ -158,7 +151,7 @@ submitFormReg=(e)=>{
     <input type='number' 
     placeholder ='Mobile Number'
      name='number' 
-     value={this.state.number} 
+     value={this.props.regnumber} 
      onChange={this.onChangeReg} 
      required/>
     </p>
@@ -167,7 +160,7 @@ submitFormReg=(e)=>{
     <input type='email' 
     placeholder ='email' 
     name='emailReg' 
-    value={this.state.emailReg} 
+    value={this.props.regemail} 
     onChange={this.onChangeReg} 
     required/>
 </p>
@@ -175,7 +168,7 @@ submitFormReg=(e)=>{
     <input type='password' 
     placeholder ='password' 
     name='passwordReg' 
-    value={this.state.passwordReg} 
+    value={this.props.regpassword} 
     onChange={this.onChangeReg} 
     required/>
 </p>
@@ -184,7 +177,7 @@ submitFormReg=(e)=>{
     <input type='password' 
     placeholder ='Re enter pass word' 
     name='repassword' 
-    value={this.state.repassword} 
+    value={this.props.regrepassword} 
     onChange={this.onChangeReg} 
     required/>
 </p>
@@ -202,5 +195,33 @@ submitFormReg=(e)=>{
     }
 
 }
+const mapStateToProps = state =>{
+    return{
+        logmail: state.email,
+        logpassword: state.password,
+        refullname: state.fullname,
+        reemail: state.emailReg,
+        renumber: state.number,
+        repassword:state.passwordReg,
+        rerepassword:state.repassword,
+        checkLog: state.showLogin
 
-export default Login;
+      
+    };
+}
+
+const mapDispatchToProps =dispatch =>{
+return {
+    onEmailLog: (lemail) => dispatch({type: actionTypes.LOGIN_EMAIL, loginData:lemail}),
+    onPasswordLog: (lpassword) => dispatch({type: actionTypes.LOGIN_PASSWORD, loginData:lpassword}),
+    onFullnameReg: (regfullname) => dispatch({type: actionTypes.REG_FULLNAME, regData:regfullname}),
+    onEmailReg: (regemail) => dispatch({type: actionTypes.REG_EMAIL, regData:regemail}),
+    onNumberReg: (regnumber) => dispatch({type: actionTypes.REG_NUMBER, regData:regnumber}),
+    onPasswordReg: (regpassword) => dispatch({type: actionTypes.REG_PASSWORD, regData:regpassword}),
+    onRepasswordReg: (regrepassword) => dispatch({type: actionTypes.REG_REPASSWORD, regData:regrepassword})
+    
+
+}
+
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

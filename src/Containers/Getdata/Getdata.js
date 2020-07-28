@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+
 import axios from 'axios';
 import Post from '../../components/Post/Post';
 import Post2 from '../../components/Post2/Post2';
-
 import './Getdata.css';
 import Nav from '../../components/Nav/Nav';
+import * as actionTypes from '../../store/actions';
+
 
 class Getdata extends Component{
 
@@ -28,26 +31,18 @@ componentDidMount(){
                 ...post,   
             }
         })
-
-        
-
         const updateShowMore =showMore.map(showm=>{
             return{
                 ...showm,
             }
         })
-
-      
         this.setState({posts: updatePosts});  //state update
         this.setState({showMore:updateShowMore});
 
 
     })
 }
-
-
 showMoreClicked=()=>{     // show and hide the more data option
-
     const doesShow = this.state.ShowMorePost;
     this.setState({ShowMorePost:!doesShow});
     }
@@ -58,7 +53,6 @@ render(){
 
     const posts =this.state.posts.map(post =>{ 
         return <Post key ={post.id} id={post.id} name ={post.name} email={post.email} body={post.body}/>;
-       
     })
 
     const showMore =this.state.showMore.map(showm =>{
@@ -77,20 +71,12 @@ return(
        {posts} 
        </section>
        </card>
-      
-
        </div>
-
-
-
-
-
        {this.state.ShowMorePost === true? 
 
 <button onClick={this.showMoreClicked}>Show More
       </button>
       :
-
        <div>
        <card>  
        <section className="Posts2">
@@ -108,6 +94,18 @@ return(
 }
 
 
+const mapStateToProps = state =>{
+    return{
+        showP: state.posts,
+   
+    };
+}
 
+const mapDispatchToProps =dispatch =>{
+return {
+    onShowPost: (showPost) => dispatch({type: actionTypes.SHOW_DATA, getData:showPost}),
+  
+}
 
-export default Getdata;
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Getdata);
