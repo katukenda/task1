@@ -1,4 +1,4 @@
-import *as actionTypes from'./actions';
+import *as actionTypes from'../actions/actionTypes';
 
 const initialState ={ 
 
@@ -10,8 +10,7 @@ const initialState ={
     passwordReg: '',
     repassword:'',
     showLogin:true,
-    posts: [],
-    showMore:[],
+    
 }
 
 
@@ -64,22 +63,10 @@ const reducer = (state = initialState , action) => {
                                     number:[action.regData]
                     
                                 };
-                                 case actionTypes.SHOW_DATA:
-                                    return{
-                                        ...state,
-                                        post:[action.getData]
-                        
-                                    };
-                                    case actionTypes.SHOW_MORE:
-                                return{
-                                    ...state,
-                                    showMore:[action.getData]
-                    
-                                };
 
         default: 
         return  state;
-       
+      
     }
    
    

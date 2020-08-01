@@ -5,8 +5,9 @@ export const REG_EMAIL ='REG_EMAIL';
 export const REG_NUMBER ='REG_NUMBER ';
 export const REG_PASSWORD ='REG_PASSWORD';
 export const REG_REPASSWORD ='REG_REPASSWORD';
-export const SHOW_DATA ='SHOW_DATA';
-export const SHOW_MORE ='SHOW_MORE';
+
+export const SHOW_MORE = 'SHOW_MORE';
+export const SHOW_POST = 'SHOW_POST';
 
 
 

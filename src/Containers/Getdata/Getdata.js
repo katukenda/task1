@@ -1,111 +1,90 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 
-import axios from 'axios';
-import Post from '../../components/Post/Post';
-import Post2 from '../../components/Post2/Post2';
-import './Getdata.css';
+import { connect } from 'react-redux';
 import Nav from '../../components/Nav/Nav';
-import * as actionTypes from '../../store/actions';
+import classes from './Getdata.css';
+import Post from '../../components/Post/Post';
+import * as GetdataActions from '../../store/actions/index';
 
-
-class Getdata extends Component{
-
-state ={                //create arrays
-    posts: [],
-    showMore:[],
-    ShowMorePost:true    
-}
-
-
-
-componentDidMount(){
-
-    axios.get('https://jsonplaceholder.typicode.com/comments')
-    .then(responce => {
-        const posts =responce.data.slice(0,12);   //asign filter data to arry
-        const showMore =responce.data.slice(12,37);
-        
-        const updatePosts = posts.map(post=>{  //map data
-            return{
-                ...post,   
-            }
-        })
-        const updateShowMore =showMore.map(showm=>{
-            return{
-                ...showm,
-            }
-        })
-        this.setState({posts: updatePosts});  //state update
-        this.setState({showMore:updateShowMore});
-
-
-    })
-}
-showMoreClicked=()=>{     // show and hide the more data option
-    const doesShow = this.state.ShowMorePost;
-    this.setState({ShowMorePost:!doesShow});
+class Getdata extends Component {
+    state = {
+        ShowMorePost:true     
+    }
+    
+    componentDidMount (){
+        this.props.onSetData();
+  
     }
 
- 
-
-render(){
-
-    const posts =this.state.posts.map(post =>{ 
-        return <Post key ={post.id} id={post.id} name ={post.name} email={post.email} body={post.body}/>;
-    })
-
-    const showMore =this.state.showMore.map(showm =>{
-        return <Post2 key ={showm.id} id={showm.id} name ={showm.name} email={showm.email} body={showm.body}/>;
-    })
-   
-
-return(
-<div>
-    <div>
-    <Nav/>
-    </div>
-   <div>
-       <card>
-       <section className="Posts">
-       {posts} 
-       </section>
-       </card>
-       </div>
-       {this.state.ShowMorePost === true? 
-
-<button onClick={this.showMoreClicked}>Show More
-      </button>
-      :
-       <div>
-       <card>  
-       <section className="Posts2">
-       {showMore} 
-       </section>
-       </card>
-<button onClick={this.showMoreClicked}>Hide</button>
-       </div>
+    showMoreClicked=()=>{     // show and hide the more data option
+        const doesShow = this.state.ShowMorePost;
+        this.setState({ShowMorePost:!doesShow});
         }
-  
-   </div>
-)
-}
-
-}
+    
+    
+    
+    render () {
 
 
-const mapStateToProps = state =>{
+        const posts = this.props.showposts.map(post =>{
+            return <Post key ={post.id} id={post.id} name ={post.name} email={post.email} body={post.body}/>;
+
+      })
+
+        const showMore = this.props.showmorepost.map(post => {
+            return <Post key={post.id} name={post.name} id={post.id} body={post.body} email={post.email}/>
+            
+        }) 
+      
+        
+        
+        return (
+            <div>
+            <div>
+            <Nav/>
+            </div>
+           <div>
+               <card>
+               <section className="Posts">
+               {posts} 
+               </section>
+               </card>
+               </div>
+               {this.state.ShowMorePost === true? 
+        
+        <button onClick={this.showMoreClicked}>Show More
+              </button>
+              :
+               <div>
+               <card>  
+               <section className="Posts2">
+               {showMore} 
+               </section>
+               </card>
+        <button onClick={this.showMoreClicked}>Hide</button>
+               </div>
+                }
+          
+           </div>
+        )
+        }
+        
+        }
+        
+        
+
+const mapStateToProps = state => {
+
     return{
-        showP: state.posts,
-   
-    };
+        showmorepost: state.get.showMore,
+        showposts: state.get.posts
+    }
 }
 
-const mapDispatchToProps =dispatch =>{
-return {
-    onShowPost: (showPost) => dispatch({type: actionTypes.SHOW_DATA, getData:showPost}),
-  
+const mapDispatchToProps = dispatch => {
+    return{
+        onSetData: (  ) => dispatch(GetdataActions.setData())
+    }
 }
 
-}
 export default connect(mapStateToProps, mapDispatchToProps)(Getdata);

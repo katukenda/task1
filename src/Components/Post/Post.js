@@ -1,5 +1,6 @@
 import React from 'react';
 import './Post.css';
+//import {connect} from 'react-redux';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown'
 
@@ -11,8 +12,6 @@ const post =(props) =>(
 <h1>{props.id}</h1>
 <h2>{props.name}</h2>
 <p>{props.email}</p>
-
-
 
 
 
@@ -34,4 +33,10 @@ const post =(props) =>(
 
 )
 
-export default post;
+
+
+
+
+
+
+export default (post);

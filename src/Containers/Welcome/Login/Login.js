@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {Redirect} from 'react-router-dom';
 import logo from '../../../assest/logo.png';
-import * as actionTypes from '../../../store/actions';
+import * as actionTypes from '../../../store/actions/actionTypes';
 
 
 import './Login.css';
@@ -21,6 +21,8 @@ class Login extends Component {
 
         this.state = {
             
+            
+            showLogin:true
         }
 
         this.onChangelog =this.onChangelog.bind(this)  
@@ -142,7 +144,7 @@ submitFormReg=(e)=>{
     <input type='text' 
     placeholder ='fullname' 
     name='fullname' 
-    value={this.props.regfullname} 
+    value={this.props.regfullname}  
     onChange={this.onChangeReg} 
     required/>
 </p>
@@ -203,8 +205,7 @@ const mapStateToProps = state =>{
         reemail: state.emailReg,
         renumber: state.number,
         repassword:state.passwordReg,
-        rerepassword:state.repassword,
-        checkLog: state.showLogin
+        rerepassword:state.repassword
 
       
     };
